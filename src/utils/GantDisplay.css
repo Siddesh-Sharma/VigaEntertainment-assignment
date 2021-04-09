@@ -1,0 +1,16 @@
+.master__Buttons {
+  margin: 6px;
+  padding: 5px 0;
+  display: flex;
+}
+.master__ButtonChild1 {
+  padding: 6px;
+}
+
+.master__ButtonChild2 {
+  padding: 6px;
+}
+
+.master__ganttChart {
+  padding: 16px;
+}

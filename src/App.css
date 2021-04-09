@@ -3,3 +3,8 @@
 .body {
   margin-top: 20px;
 }
+
+.body__Title {
+  display: flex;
+  justify-content: center;
+}
