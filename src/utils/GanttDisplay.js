@@ -7,10 +7,11 @@ import {
   Toolbar,
   Selection,
 } from "@syncfusion/ej2-react-gantt";
-import { Button } from "react-bootstrap";
+import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 import "./GantDisplay.css";
 
 export default function GanttDisplay({ chartData }) {
+  //prop "chartData" must be an array
   //Variables for component props
   const taskValues = {
     id: "id",
@@ -37,22 +38,43 @@ export default function GanttDisplay({ chartData }) {
     current.editModule.dialogModule.openEditDialog();
   }
 
+  //const for tooltip content
+  const popover1 = <Tooltip id="popover-basic">{"Add a new Task"}</Tooltip>;
+  const popover2 = <Tooltip id="popover-basic">{"Edit existing Task"}</Tooltip>;
   return (
     <div>
+      <hr />
       <div className="master__Buttons">
         <div className="master__ButtonChild1">
-          <Button size="sm" onClick={() => handleNewTask()}>
-            New Task
-          </Button>
+          {/* on hover event for displaying tooltip */}
+          <OverlayTrigger
+            trigger="hover"
+            placement="bottom"
+            delay={100}
+            overlay={popover1}
+          >
+            <Button size="sm" onClick={() => handleNewTask()}>
+              New Task
+            </Button>
+          </OverlayTrigger>
         </div>
         <div className="master__ButtonChild2">
-          <Button size="sm" onClick={() => handleEditTask()}>
-            Edit Task
-          </Button>
+          {/* on hover event for displaying tooltip */}
+          <OverlayTrigger
+            trigger="hover"
+            placement="bottom"
+            delay={100}
+            overlay={popover2}
+          >
+            <Button size="sm" onClick={() => handleEditTask()}>
+              Edit Task
+            </Button>
+          </OverlayTrigger>
         </div>
       </div>
       <br />
       <div className="master__ganttChart">
+        {/* "GanttComponent" staright from the package takes care of diplaying our chart  */}
         <GanttComponent
           dataSource={chartData}
           taskFields={taskValues}
